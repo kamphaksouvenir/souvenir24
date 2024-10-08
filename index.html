@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Self-Reflection Story - Transitions</title>
+    <title>Self-Reflection Story - Identity Confirmation</title>
     <style>
         /* Basic reset */
         * {
@@ -98,16 +98,17 @@
 
     <!-- Confirmation Page (Page 3) -->
     <div class="container" id="confirmationPage">
-        <h1>Confirm Your Name</h1>
-        <p id="nicknameConfirmation"></p>
-        <button id="confirmYes">Yes</button>
-        <button id="confirmNo">No</button>
+        <h1>น้อง <span id="nickname"></span> ใช่มั้ยครับ?</h1>
+        <p>Confirm your identity by entering your Lab Table Number:</p>
+        <input type="text" id="tableNumber" placeholder="Enter your Lab Table Number">
+        <p id="table-error-message" class="error">Invalid Table Number. Please try again.</p>
+        <button id="confirmTableNumber">Confirm Table Number</button>
+        <button id="reenterID">Re-enter Student ID</button>
     </div>
 
     <script>
         // Function to handle transitions between pages
         function transitionPages(fromPage, toPage) {
-            console.log("Transitioning from page:", fromPage.id, "to page:", toPage.id);  // Debugging line
             fromPage.classList.remove('fade-in');
             setTimeout(() => {
                 fromPage.classList.remove('show');  // Hide the current page after fade-out
@@ -125,7 +126,6 @@
             try {
                 const response = await fetch('freshies.json');  // Make sure the path is correct
                 const studentData = await response.json();  // Convert the response to JSON format
-                console.log("Fetched student data:", studentData);  // Debugging line
                 return studentData;
             } catch (error) {
                 console.error("Error fetching student data:", error);
@@ -145,46 +145,60 @@
             const errorMessage = document.getElementById('error-message');
             const studentIDPage = document.getElementById('studentIDPage');
             const confirmationPage = document.getElementById('confirmationPage');
-            const nicknameConfirmation = document.getElementById('nicknameConfirmation');
+            const nicknameElement = document.getElementById('nickname');
 
             const studentData = await fetchStudentData();  // Fetch student data from JSON file
 
             // Check if the entered student ID exists in the JSON data
             const foundStudent = studentData.find(student => student.studentid == studentID);
-            console.log("Found student:", foundStudent);  // Debugging line
 
             if (foundStudent) {
                 // Show the confirmation page and display the nickname
-                nicknameConfirmation.textContent = `Is your name ${foundStudent.nickname}?`;
-                
+                nicknameElement.textContent = foundStudent.nickname;
+
                 // Save student info temporarily for confirmation
                 localStorage.setItem('tempStudentID', foundStudent.studentid);
                 localStorage.setItem('tempStudentName', foundStudent.nickname);
+                localStorage.setItem('tempTableID', foundStudent.tableid);
 
                 // Transition from ID input page to confirmation page
                 transitionPages(studentIDPage, confirmationPage);
             } else {
                 // Show error message if the student ID is not found
-                console.log("Invalid student ID entered.");  // Debugging line
                 errorMessage.style.display = 'block';
             }
         }
 
-        // Handle the confirmation buttons
-        document.getElementById('confirmYes').addEventListener('click', function() {
-            // Move data from temp storage to permanent storage
-            localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
-            localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
+        // Handle table number confirmation
+        document.getElementById('confirmTableNumber').addEventListener('click', function() {
+            const tableNumber = document.getElementById('tableNumber').value;
+            const storedTableID = localStorage.getItem('tempTableID');
+            const tableErrorMessage = document.getElementById('table-error-message');
 
-            // Redirect to the next page or part of the story
-            window.location.href = 'question1.html';  // Proceed to the next section
+            // Validate the entered table number against the stored table ID
+            if (tableNumber === storedTableID) {
+                // Move data from temp storage to permanent storage
+                localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
+                localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
+                localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
+
+                // Redirect to the next page or part of the story
+                window.location.href = 'question1.html';  // Proceed to the next section
+            } else {
+                // Show error message if the table number is incorrect
+                tableErrorMessage.style.display = 'block';
+            }
         });
 
-        document.getElementById('confirmNo').addEventListener('click', function() {
+        // Handle re-entering student ID
+        document.getElementById('reenterID').addEventListener('click', function() {
             // Clear temp data and return to the ID input page
             localStorage.removeItem('tempStudentID');
             localStorage.removeItem('tempStudentName');
+            localStorage.removeItem('tempTableID');
             document.getElementById('studentID').value = '';  // Clear the input field
+            document.getElementById('tableNumber').value = '';  // Clear the table number field
+            document.getElementById('table-error-message').style.display = 'none';  // Hide the table error
 
             const confirmationPage = document.getElementById('confirmationPage');
             const studentIDPage = document.getElementById('studentIDPage');
