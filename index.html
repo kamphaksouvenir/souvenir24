@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Self-Reflection Story - Identity Confirmation</title>
     <style>
@@ -109,6 +110,7 @@
     <script>
         // Function to handle transitions between pages
         function transitionPages(fromPage, toPage) {
+            console.log("Transitioning from:", fromPage.id, "to:", toPage.id);  // Debugging
             fromPage.classList.remove('fade-in');
             setTimeout(() => {
                 fromPage.classList.remove('show');  // Hide the current page after fade-out
@@ -124,8 +126,10 @@
         // Function to fetch student data from JSON
         async function fetchStudentData() {
             try {
+                console.log("Fetching student data...");  // Debugging
                 const response = await fetch('freshies.json');  // Make sure the path is correct
                 const studentData = await response.json();  // Convert the response to JSON format
+                console.log("Fetched student data:", studentData);  // Debugging
                 return studentData;
             } catch (error) {
                 console.error("Error fetching student data:", error);
@@ -148,13 +152,16 @@
             const nicknameElement = document.getElementById('nickname');
 
             const studentData = await fetchStudentData();  // Fetch student data from JSON file
+            console.log("Student ID entered:", studentID);  // Debugging
 
             // Check if the entered student ID exists in the JSON data
             const foundStudent = studentData.find(student => student.studentid == studentID);
+            console.log("Found student:", foundStudent);  // Debugging
 
             if (foundStudent) {
                 // Show the confirmation page and display the nickname
                 nicknameElement.textContent = foundStudent.nickname;
+                console.log("Displaying nickname:", foundStudent.nickname);  // Debugging
 
                 // Save student info temporarily for confirmation
                 localStorage.setItem('tempStudentID', foundStudent.studentid);
@@ -165,6 +172,7 @@
                 transitionPages(studentIDPage, confirmationPage);
             } else {
                 // Show error message if the student ID is not found
+                console.log("Invalid student ID entered.");  // Debugging
                 errorMessage.style.display = 'block';
             }
         }
@@ -207,6 +215,4 @@
 
         // Handle the submit button click to validate and proceed
         document.getElementById('submitID').addEventListener('click', validateStudentID);
-    </script>
-</body>
-</html>
+    </script
