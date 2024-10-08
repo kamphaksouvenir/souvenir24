@@ -4,75 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kamphak Grand Orientation 2024</title>
-    <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Full height container */
-        html, body {
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Container for each page */
-        .container {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            opacity: 0;
-            transition: opacity 1.5s ease;  /* 1 seconds fade-in and fade-out */
-        }
-
-        /* Show container */
-        .show {
-            display: flex;  /* Makes the container visible */
-        }
-
-        /* Fade-in effect */
-        .fade-in {
-            opacity: 1;
-        }
-
-        /* Input and button styling */
-        input, button {
-            padding: 10px;
-            margin: 10px 0;
-            font-size: 16px;
-        }
-
-        input {
-            width: 250px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            background-color: black;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: opacity 0.5s ease;
-        }
-
-        button:active {
-            opacity: 0;  /* Button fades to transparent when clicked */
-        }
-
-        /* Error and confirmation messages */
-        .error {
-            color: red;
-            font-size: 14px;
-            display: none;
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -96,7 +28,7 @@
     <div class="container" id="confirmationPage">
         <h1>น้อง <span id="nickname"></span> ใช่มั้ยครับ?</h1>
         <h2>ยืนยันตัวตนด้วยเลขที่นั่งโต๊ะแลป</h2>
-	<p>ใส่เป็นตัวเลขไม่ต้องสนจำนวนหลัก เช่น 1 ให้ใส่ 1 เลย</p>
+		<p>ใส่เป็นตัวเลขไม่ต้องสนจำนวนหลัก เช่น 1 ให้ใส่ 1 เลย</p>
         <input type="text" id="tableNumber" placeholder="ใส่โลดจ้า">
         <p id="table-error-message" class="error">เลขโต๊ะแลปไม่ถูกต้อง โปรดลองอีกครั้ง</p>
         <button id="confirmTableNumber">ยืนยันตัวตน</button>
