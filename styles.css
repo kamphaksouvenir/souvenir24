@@ -26,7 +26,8 @@
 	 	     url('assets/fonts/jschanok.woff2') format('woff2');
     		font-weight: normal;
     		font-style: normal;
-
+		}
+		@font-face { 
 		font-family: 'jongjaroen';
     		src: url('assets/fonts/jongjaroen.woff') format('woff');
     		font-weight: normal;
