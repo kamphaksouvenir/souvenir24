@@ -123,7 +123,7 @@
         // Function to fetch student data from JSON
         async function fetchStudentData() {
             try {
-                const response = await fetch('students.json');  // Fetch the students.json file
+                const response = await fetch('freshies.json');  // Fetch the freshies.json file
                 const studentData = await response.json();  // Convert the response to JSON format
                 return studentData;
             } catch (error) {
