@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Self-Reflection Story - Identity Confirmation</title>
+    <title>Kamphak Grand Orientation 2024</title>
     <style>
         /* Basic reset */
         * {
@@ -26,7 +26,7 @@
             align-items: center;
             min-height: 100vh;
             opacity: 0;
-            transition: opacity 1.5s ease;  /* 3 seconds fade-in and fade-out */
+            transition: opacity 1.5s ease;  /* 1 seconds fade-in and fade-out */
         }
 
         /* Show container */
@@ -78,27 +78,28 @@
 
     <!-- Introduction Page (Page 1) -->
     <div class="container show fade-in" id="introductionPage">
-        <h1>Welcome to the Self-Reflection Story</h1>
-        <p>Before starting, please read the following rules and give your consent.</p>
-        <button id="proceedButton">I Agree and Proceed</button>
+        <h1>ยินดีต้อนรับสู่งานอบรมใหญ่รับน้องข้ามฟาก 2567</h1>
+        <p>นี่เป็นแบบสำรวจใจเล็ก ๆ น้อย ๆ ที่พี่ ๆ Senior130 อยากชวนน้อง Freshy134 ทำไปด้วยกัน</p>
+		<p>Disclaimer : เนื้อหาและข้อมูลทั้งหมดของแบบสำรวจในวันงานจริงเป็นความลับและจะไม่ถูกนำไปเผยแพร่เด็ดขาด</p>
+        <button id="proceedButton">ตกลง</button>
     </div>
 
     <!-- Student ID Page (Page 2) -->
     <div class="container" id="studentIDPage">
-        <h1>Enter Your Student ID</h1>
-        <input type="text" id="studentID" placeholder="Enter your student ID">
-        <p id="error-message" class="error">Invalid Student ID. Please try again.</p>
-        <button id="submitID">Submit</button>
+        <h1>ใส่รหัสนักศึกษาของน้องเลย</h1>
+        <input type="text" id="studentID" placeholder="6x01xxx">
+        <p id="error-message" class="error">ไม่พบรหัสดังกล่าวในระบบ โปรดลองอีกครั้ง</p>
+        <button id="submitID">ยืนยัน</button>
     </div>
 
     <!-- Confirmation Page (Page 3) -->
     <div class="container" id="confirmationPage">
         <h1>น้อง <span id="nickname"></span> ใช่มั้ยครับ?</h1>
-        <p>Confirm your identity by entering your Lab Table Number:</p>
+        <p>ยืนยันตัวตนด้วยเลขที่นั่งโต๊ะแลป</p>
         <input type="text" id="tableNumber" placeholder="Enter your Lab Table Number">
-        <p id="table-error-message" class="error">Invalid Table Number. Please try again.</p>
-        <button id="confirmTableNumber">Confirm Table Number</button>
-        <button id="reenterID">Re-enter Student ID</button>
+        <p id="table-error-message" class="error">เลขโต๊ะแลปไม่ถูกต้อง โปรดลองอีกครั้ง</p>
+        <button id="confirmTableNumber">ยืนยันตัวตน</button>
+        <button id="reenterID">ย้อนกลับ</button>
     </div>
 
     <script>
