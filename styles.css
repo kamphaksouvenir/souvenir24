@@ -85,9 +85,11 @@
 		
 		#jschanok_h1 {
 			font-size: 25vw;
-			font-family: 'jschanok'
+			font-family: 'jschanok';
+			max-width: 100%
 		}
 		#jschanok_h2 {
 			font-size: 12.5vw;
-			font-family: 'jschanok'
+			font-family: 'jschanok';
+			max-width: 100%
 		}
