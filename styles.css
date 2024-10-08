@@ -9,6 +9,7 @@
         html, body {
             height: 100%;
             font-family: Arial, sans-serif;
+			text-shadow: none;
         }
 		
 		body {
@@ -17,6 +18,9 @@
     		background-position: center;   /* Center the background image */
     		background-attachment: fixed;  /* Keeps the background in place even while scrolling */
     		background-repeat: no-repeat;  /* Prevents the image from repeating */
+		}
+		body {
+			text-align: center;
 		}
 		@font-face {
     		font-family: 'jschanok';
@@ -31,7 +35,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-		text-align: center;
+			text-align: center;
             min-height: 100vh;
             opacity: 0;
             transition: opacity 1.5s ease;  /* 1 seconds fade-in and fade-out */
@@ -80,7 +84,11 @@
             display: none;
         }
 		
-		#jschanok {
+		#jschanok_h1 {
 			font-size: 84px;
+			font-family: 'jschanok'
+		}
+		#jschanok_h2 {
+			font-size: 72px;
 			font-family: 'jschanok'
 		}
