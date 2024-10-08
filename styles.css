@@ -1,96 +1,74 @@
-/* styles.css */
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Full height container */
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+		
+		body {
+  			background-image: url('assets/images/background.jpg');  /* Path to background.jpg in the assets folder */
+   			background-size: cover;        /* Cover ensures the image covers the entire background */
+    		background-position: center;   /* Center the background image */
+    		background-attachment: fixed;  /* Keeps the background in place even while scrolling */
+    		background-repeat: no-repeat;  /* Prevents the image from repeating */
+		}
 
-/* Make sure the container fills the entire viewport */
-html, body {
-    height: 100%;
-    font-family: Arial, sans-serif;
-}
+        /* Container for each page */
+        .container {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 1.5s ease;  /* 1 seconds fade-in and fade-out */
+        }
 
-/* Flexbox container to center content both horizontally and vertically */
-.container {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center; /* Centers vertically */
-    align-items: center;     /* Centers horizontally */
-    min-height: 100vh;       /* Full viewport height */
-    background-color: rgba(0, 0, 0, 0.3); /* Optional dimming layer on content */
-    z-index: 2;              /* Make sure the container stays above the background */
-    position: relative;       /* Ensures content stays above the background */
-}
+        /* Show container */
+        .show {
+            display: flex;  /* Makes the container visible */
+        }
 
-/* Background styling with dimming and fixed position */
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('your-background-image.jpg'); /* Replace with your image */
-    background-size: cover;      /* Ensures the image covers the entire viewport */
-    background-position: center; /* Centers the image */
-    background-attachment: fixed; /* Keeps the background static when scrolling */
-    opacity: 0.5;                /* Adjust the opacity to dim the background */
-    z-index: -1;                 /* Keeps the background behind the content */
-}
+        /* Fade-in effect */
+        .fade-in {
+            opacity: 1;
+        }
 
-/* Logo styling */
-.logo img {
-    max-width: 150px;
-    height: auto;
-    margin-bottom: 20px;
-}
+        /* Input and button styling */
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
 
-/* Header and text styling */
-header h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
+        input {
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-/* Rules section */
-.rules {
-    max-width: 600px;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #555;
-}
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
 
-/* Button styling */
-button {
-    padding: 10px 20px;
-    background-color: #377d4a;
-    color: white;
-    border: none;
-	font-size: 16px;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 16px;
-	transition: box-shadow 0.9s ease, opacity 5s ease;
-}
+        button:active {
+            opacity: 0;  /* Button fades to transparent when clicked */
+        }
 
-button:hover {
-    background-color: #40784f;
-	box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
-}
-button:active {
-	opacity: 0;
-}
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-    .rules {
-        padding: 0 10px;  /* Add some padding on smaller screens */
-    }
-
-    header h1 {
-        font-size: 20px;
-    }
-}
+        /* Error and confirmation messages */
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
