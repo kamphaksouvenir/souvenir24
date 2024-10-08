@@ -26,6 +26,11 @@
 	 	     url('assets/fonts/jschanok.woff2') format('woff2');
     		font-weight: normal;
     		font-style: normal;
+
+		font-family: 'jongjaroen';
+    		src: url('assets/fonts/jongjaroen.woff') format('woff');
+    		font-weight: normal;
+    		font-style: normal;
 		}
 		
         /* Container for each page */
@@ -93,5 +98,17 @@
 			font-size: 15vw;
 			color: #FFFFFF;
 			font-family: 'jschanok';
+			max-width: 100%
+		}
+		#jongjaroen_h1 {
+			font-size: 20vw;
+			color: #FFFFFF;
+			font-family: 'jongjaroen';
+			max-width: 100%
+		}
+		#jongjaroen_h2 {
+			font-size: 15vw;
+			color: #FFFFFF;
+			font-family: 'jongjaroen';
 			max-width: 100%
 		}
