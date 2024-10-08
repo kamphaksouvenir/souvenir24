@@ -89,6 +89,16 @@
             display: none;
         }
 		
+	.transparent-container {
+   		background-color: rgba(255, 255, 255, 0.8); /* White background with 50% opacity */
+    		padding: 20px; /* Add some padding for spacing */
+    		max-width: 90%; /* Set a max width so it doesn't span the entire screen */
+    		margin: 20px auto; /* Center the container horizontally with margin */
+    		border-radius: 10px; /* Optional: add rounded corners */
+    		text-align: left; /* Left-align the text */
+    		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for depth */
+	}
+			
 		#jschanok_h1 {
 			font-size: 20vw;
 			color: #000000;
