@@ -26,7 +26,7 @@
             align-items: center;
             min-height: 100vh;
             opacity: 0;
-            transition: opacity 2s ease;  /* 3 seconds fade-in and fade-out */
+            transition: opacity 1.5s ease;  /* 3 seconds fade-in and fade-out */
         }
 
         /* Show container */
@@ -113,7 +113,7 @@
                 setTimeout(() => {
                     toPage.classList.add('fade-in');
                 }, 10);  // Delay to ensure the element becomes visible before applying fade-in
-            }, 3000);  // Wait for 3 seconds (fade-out duration)
+            }, 2000);  // Wait for 3 seconds (fade-out duration)
         }
 
         // Function to fetch student data from JSON
