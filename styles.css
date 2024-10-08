@@ -19,9 +19,6 @@
     		background-attachment: fixed;  /* Keeps the background in place even while scrolling */
     		background-repeat: no-repeat;  /* Prevents the image from repeating */
 		}
-		body {
-			text-align: center;
-		}
 		@font-face {
     		font-family: 'jschanok';
     		src: url('assets/fonts/jschanok.ttf') format('truetype');
