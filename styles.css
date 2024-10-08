@@ -22,6 +22,8 @@
 		@font-face {
     		font-family: 'jschanok';
     		src: url('assets/fonts/jschanok.ttf') format('truetype');
+			url('assets/fonts/jschanok.woff') format('woff');
+	 		url('assets/fonts/jschanok.woff2') format('woff2');
     		font-weight: normal;
     		font-style: normal;
 		}
