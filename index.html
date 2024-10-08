@@ -149,15 +149,15 @@
             const studentData = await fetchStudentData();  // Fetch student data from JSON file
 
             // Check if the entered student ID exists in the JSON data
-            const foundStudent = studentData.find(student => student.studentID === studentID);
+            const foundStudent = studentData.find(student => student.studentid == studentID);
 
             if (foundStudent) {
                 // Show the confirmation page and display the nickname
-                nicknameConfirmation.textContent = `Is your name ${foundStudent.name}?`;
+                nicknameConfirmation.textContent = `Is your name ${foundStudent.nickname}?`;
                 
                 // Save student info temporarily for confirmation
-                localStorage.setItem('tempStudentID', foundStudent.studentID);
-                localStorage.setItem('tempStudentName', foundStudent.name);
+                localStorage.setItem('tempStudentID', foundStudent.studentid);
+                localStorage.setItem('tempStudentName', foundStudent.nickname);
 
                 // Transition from ID input page to confirmation page
                 transitionPages(studentIDPage, confirmationPage);
