@@ -17,6 +17,7 @@
     		background-position: center;   /* Center the background image */
     		background-attachment: fixed;  /* Keeps the background in place even while scrolling */
     		background-repeat: no-repeat;  /* Prevents the image from repeating */
+			text-align: center
 		}
 		@font-face {
     		font-family: 'jschanok';
