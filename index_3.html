@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Story - Fade Transition</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full height container */
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container for both pages */
+        .container {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 3s ease;  /* 3 seconds fade-in and fade-out */
+        }
+
+        /* Show container */
+        .show {
+            display: flex;  /* Makes the container visible */
+        }
+
+        /* Fade-in effect for container */
+        .fade-in {
+            opacity: 1;
+        }
+
+        /* Input and button styling */
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        input {
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        button:active {
+            opacity: 0;  /* Button fades to transparent when clicked */
+        }
+
+        /* Error message styling */
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- First Page (Introduction) -->
+    <div class="container show fade-in" id="introductionPage">
+        <h1>Welcome to the Self-Reflection Story</h1>
+        <p>Before starting, please read the following rules and give your consent.</p>
+        <button id="proceedButton">I Agree and Proceed</button>
+    </div>
+
+    <!-- Second Page (Student ID Input) -->
+    <div class="container" id="studentIDPage">
+        <h1>รหัสนักศึกษาของน้องคือ</h1>
+        <input type="text" id="studentID" placeholder="6x01xxx">
+        <p id="error-message" class="error">Invalid Student ID. Please try again.</p>
+        <button id="submitID">Submit</button>
+    </div>
+<!-- Confirmation section (hidden by default) -->
+        <div id="confirmationSection" class="confirmation">
+            <p id="nicknameConfirmation"></p>
+            <button id="confirmYes">Yes</button>
+            <button id="confirmNo">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch student data from JSON
+        async function fetchStudentData() {
+            try {
+                const response = await fetch('freshies.json');  // Fetch the freshies.json file
+                const studentData = await response.json();  // Convert the response to JSON format
+                return studentData;
+            } catch (error) {
+                console.error("Error fetching student data:", error);
+            }
+        }
+
+        // Function to validate student ID and display confirmation
+        async function validateStudentID() {
+            const studentID = document.getElementById('studentID').value;
+            const errorMessage = document.getElementById('error-message');
+            const confirmationSection = document.getElementById('confirmationSection');
+            const nicknameConfirmation = document.getElementById('nicknameConfirmation');
+            
+            const studentData = await fetchStudentData();  // Fetch student data from JSON file
+
+            // Check if the entered student ID exists in the JSON data
+            const foundStudent = studentData.find(student => student.studentID === studentID);
+
+            if (foundStudent) {
+                // Show the confirmation section and display the nickname
+                errorMessage.style.display = 'none';
+                confirmationSection.style.display = 'block';
+                nicknameConfirmation.textContent = `น้อง ${foundStudent.name} ใช่มั้ยครับ?`;
+                
+                // Save student info temporarily for confirmation
+                localStorage.setItem('tempStudentID', foundStudent.studentID);
+                localStorage.setItem('tempStudentName', foundStudent.name);
+            } else {
+                // Show error message if the student ID is not found
+                confirmationSection.style.display = 'none';
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        // Handle the confirmation buttons
+        document.getElementById('confirmYes').addEventListener('click', function() {
+            // Move data from temp storage to permanent storage
+            localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
+            localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
+
+            // Redirect to the next page or part of the story
+            window.location.href = 'question1.html';  // Proceed to the next section
+        });
+
+        document.getElementById('confirmNo').addEventListener('click', function() {
+            // Clear temp data and reset input
+            localStorage.removeItem('tempStudentID');
+            localStorage.removeItem('tempStudentName');
+            document.getElementById('studentID').value = '';  // Clear the input field
+            document.getElementById('confirmationSection').style.display = 'none';  // Hide confirmation
+        });
+
+        // Handle the submit button click
+        document.getElementById('submitID').addEventListener('click', validateStudentID);
+		
+        // JavaScript for handling page transitions and student ID input
+
+        // Get the elements for the pages
+        const introPage = document.getElementById('introductionPage');
+        const studentIDPage = document.getElementById('studentIDPage');
+        const proceedButton = document.getElementById('proceedButton');
+
+        // Handle proceed button click (fade-out intro and fade-in student ID page)
+        proceedButton.addEventListener('click', function() {
+            // Fade out the introduction page
+            introPage.classList.remove('fade-in');
+            setTimeout(() => {
+                introPage.classList.remove('show');  // Hide introduction after fade-out
+
+                // Show and fade in the student ID page
+                studentIDPage.classList.add('show');
+                setTimeout(() => {
+                    studentIDPage.classList.add('fade-in');
+                }, 10);  // Delay to ensure the element becomes visible before applying fade-in
+            }, 3000);  // Wait for 3 seconds (fade-out duration)
+        });
+		
+    </script>
+
+</body>
+</html>
