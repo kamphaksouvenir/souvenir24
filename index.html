@@ -107,7 +107,7 @@
     <script>
         // Function to handle transitions between pages
         function transitionPages(fromPage, toPage) {
-            // Fade out the current page
+            console.log("Transitioning from page:", fromPage.id, "to page:", toPage.id);  // Debugging line
             fromPage.classList.remove('fade-in');
             setTimeout(() => {
                 fromPage.classList.remove('show');  // Hide the current page after fade-out
@@ -123,8 +123,9 @@
         // Function to fetch student data from JSON
         async function fetchStudentData() {
             try {
-                const response = await fetch('freshies.json');  // Fetch the freshies.json file
+                const response = await fetch('freshies.json');  // Make sure the path is correct
                 const studentData = await response.json();  // Convert the response to JSON format
+                console.log("Fetched student data:", studentData);  // Debugging line
                 return studentData;
             } catch (error) {
                 console.error("Error fetching student data:", error);
@@ -150,6 +151,7 @@
 
             // Check if the entered student ID exists in the JSON data
             const foundStudent = studentData.find(student => student.studentid == studentID);
+            console.log("Found student:", foundStudent);  // Debugging line
 
             if (foundStudent) {
                 // Show the confirmation page and display the nickname
@@ -163,6 +165,7 @@
                 transitionPages(studentIDPage, confirmationPage);
             } else {
                 // Show error message if the student ID is not found
+                console.log("Invalid student ID entered.");  // Debugging line
                 errorMessage.style.display = 'block';
             }
         }
