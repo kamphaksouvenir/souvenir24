@@ -12,7 +12,7 @@
         }
 		
 		body {
-  			background-image: url('assets/images/background.jpg');  /* Path to background.jpg in the assets folder */
+  			background-image: url('/assets/images/background.JPG');  /* Path to background.jpg in the assets folder */
    			background-size: cover;        /* Cover ensures the image covers the entire background */
     		background-position: center;   /* Center the background image */
     		background-attachment: fixed;  /* Keeps the background in place even while scrolling */
