@@ -1,11 +1,32 @@
-        /* Basic reset */
-        * {
+/* Basic reset */
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-				
-				h1 {
+	
+#backgroundVideo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+	object-fit: cover;
+	filter: blur(10px);
+	   ; /* Push video behind other content */
+	  
+    }
+
+.content {
+        position: relative;
+        z-index: 1;  /* Ensure the content is displayed above the video */
+        color: black;  /* Adjust text color to stand out against the video */
+        text-align: center;
+        padding: 20px;
+    }
+		
+h1 {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -13,6 +34,7 @@
 			letter-spacing: 0.5px;
 			text-rendering: optimizeLegibility;	
         } 
+/*font faces*/
 		@font-face {
     		font-family: 'jschanok';
     		src: url('assets/fonts/jschanok.ttf') format('truetype');
@@ -43,15 +65,15 @@
     		font-weight: normal;
     		font-style: normal;
 		}
-        /* Full height container */
-        html, body {
+/* Full height container */
+html, body {
             height: 100%;
             font-family: Arial, sans-serif, 'jschanok';
 	} 
 	
 		
-        /* Container for each page */
-        .container {
+/* Container for each page */
+.container {
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -63,31 +85,31 @@
             transition: opacity 1.5s ease;  /* 1 seconds fade-in and fade-out */
         }
 
-        /* Show container */
-        .show {
+	/* Show container */
+.show {
             display: flex;  /* Makes the container visible */
         }
 
-        /* Fade-in effect */
-        .fade-in {
+	/* Fade-in effect */
+.fade-in {
             opacity: 1;
         }
 
         /* Input and button styling */
-        input, button {
+input, button {
             padding: 10px;
             margin: 10px 0;
             font-size: 16px;
 		font-weight: bold
         }
 
-        input {
+input {
             width: 250px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        button {
+button {
             background-color: black;
             color: white;
             border: none;
@@ -96,18 +118,18 @@
             transition: opacity 0.5s ease;
         }
 
-        button:active {
+button:active {
             opacity: 0;  /* Button fades to transparent when clicked */
         }
 
         /* Error and confirmation messages */
-        .error {
+.error {
             color: red;
             font-size: 14px;
             display: none;
         }
 		
-	.transparent-container {
+.transparent-container {
    		background-color: rgba(255, 255, 255, 0.8); /* White background with 50% opacity */
     		padding: 20px; /* Add some padding for spacing */
     		max-width: 90%; /* Set a max width so it doesn't span the entire screen */
@@ -168,23 +190,3 @@
 			font-family: Arial;
 			max-width: 100%
 		}
-   #backgroundVideo {
-        position: fixed;
-        top: 0;
-        left: 0;
-        min-width: 100%;
-        min-height: 100%;
-        z-index: -1;
-	object-fit: cover
-	filter: blur(10px);
-	   ; /* Push video behind other content */
-	  
-    }
-
-    .content {
-        position: relative;
-        z-index: 1;  /* Ensure the content is displayed above the video */
-        color: black;  /* Adjust text color to stand out against the video */
-        text-align: center;
-        padding: 20px;
-    }
