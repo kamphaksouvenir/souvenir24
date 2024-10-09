@@ -181,9 +181,10 @@ button:active {
 		#c_7 {
 			font-size: 12.5vw;
 			color: #ffffff;
-			font-family: 'jschanok';
+			font-family: 'fcv';
+			font-weight: normal;
 			max-width: 100%;
-			max-height: 5%
+			max-height: 5%  
 		}
 		#c_8 {
 			color: #ffffff;
