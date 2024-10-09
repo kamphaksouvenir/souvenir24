@@ -46,6 +46,7 @@
     	<h1>Choose your letter</h1>
     	<button id="letterToYouBtn" onclick="openDocument()">จดหมายถึงฉัน</button>
     	<button id="letterToFutureYouBtn" onclick="openGoogleForm()">จดหมายถึงฉันในอนาคต</button>
+		<button id="backToStudentIDBtn">กลับไปหน้าใส่รหัสนักศึกษา</button>
 	</div>
 
     <script>
@@ -163,6 +164,7 @@
     const tableErrorMessage = document.getElementById('table-error-message');
     const confirmationPage = document.getElementById('confirmationPage');
     const letterPage = document.getElementById('letterPage');
+	    
 
         // Validate the entered table number against the stored table ID
         if (tableNumber === storedTableID) {
@@ -178,6 +180,13 @@
             tableErrorMessage.style.display = 'block';
         }
     });
+	     // Handle back button click to return to the Student ID page
+    document.getElementById('backToStudentIDBtn').addEventListener('click', function() {
+        const letterPage = document.getElementById('letterPage');
+        const studentIDPage = document.getElementById('studentIDPage');
+        transitionPages(letterPage, studentIDPage);  // Transition back to the Student ID page
+    });
+
 
         // Handle re-entering student ID
         document.getElementById('reenterID').addEventListener('click', function() {
