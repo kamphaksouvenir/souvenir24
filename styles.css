@@ -4,12 +4,20 @@
             padding: 0;
             box-sizing: border-box;
         }
+				
+				h1 {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+			word-spacing: 1px;
+			letter-spacing: 0.5px;
+			text-rendering: optimizeLegibility;	
+        } 
 
         /* Full height container */
         html, body {
             height: 100%;
             font-family: Arial, sans-serif;
-	    -webkit-font-smoothing: antialiased
         }
 		
 		body {
@@ -129,7 +137,7 @@
 			font-size: 15vw;
 			color: #000000;
 			font-family: 'jschanok';
-			max-width: 100%
+			max-width: 100%;
 			max-height: 7.5%
 		}
 		#c_3 {
@@ -145,20 +153,20 @@
 			max-width: 100%
 		}
 		#c_5 {
-			font-size: 20vw;
-			color: #FFFFFF;
+			font-size: 15vw;
+			color: #0f3b04;
 			font-family: 'tankk';
-			max-width: 100%
+			max-width: 75%
 		}
-	        #c_6 {
+	    #c_6 {
 			font-size: 20vw;
-			color: #FFFFFF;
+			color: #000000;
 			font-family: 'soum';
-			max-width: 100%
+			max-width: 75%
 		}
 		#c_7 {
-			font-size: 20vw;
-			color: #FFFFFF;
-			font-family: 'kalong_n';
+			font-size: 15vw;
+			color: #000000;
+			font-family: 'soum';
 			max-width: 100%
 		}
