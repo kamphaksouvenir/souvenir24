@@ -60,8 +60,48 @@
                 setTimeout(() => {
                     toPage.classList.add('fade-in');
                 }, 10);  // Delay to ensure the element becomes visible before applying fade-in
+		 saveCurrentPage(toPage.id);
             }, 2000);  // Wait for 3 seconds (fade-out duration)
         }
+	// Function to store the current page in localStorage
+	function saveCurrentPage(pageID) {
+  	  localStorage.setItem('currentPage', pageID);
+	}
+	// Function to restore the page state based on localStorage
+	function restorePageState() {
+    const currentPage = localStorage.getItem('currentPage');
+    const studentID = localStorage.getItem('studentID');
+    const studentName = localStorage.getItem('studentName');
+    const tableID = localStorage.getItem('tableID');
+
+    if (currentPage) {
+        // Hide all pages
+        document.querySelectorAll('.container').forEach(page => {
+            page.classList.remove('show', 'fade-in');
+        });
+
+        // Show and fade in the saved page
+        const savedPage = document.getElementById(currentPage);
+        savedPage.classList.add('show');
+        setTimeout(() => {
+            savedPage.classList.add('fade-in');
+        }, 10);
+
+        // Restore student data if available
+        if (studentID) {
+            document.getElementById('studentID').value = studentID;
+        }
+        if (studentName) {
+            document.getElementById('nickname').textContent = studentName;
+        }
+        if (tableID) {
+            document.getElementById('tableNumber').value = tableID;
+        }
+   	 }
+	}
+
+	// Call restorePageState when the page loads
+	window.onload = restorePageState;
 
         // Function to fetch student data from JSON
         async function fetchStudentData() {
@@ -118,9 +158,11 @@
 
 	    // Modify existing table confirmation handling to show letterPage
     document.getElementById('confirmTableNumber').addEventListener('click', function() {
-        const tableNumber = document.getElementById('tableNumber').value;
-        const storedTableID = localStorage.getItem('tempTableID');
-        const tableErrorMessage = document.getElementById('table-error-message');
+    const tableNumber = document.getElementById('tableNumber').value;
+    const storedTableID = localStorage.getItem('tempTableID');
+    const tableErrorMessage = document.getElementById('table-error-message');
+    const confirmationPage = document.getElementById('confirmationPage');
+    const letterPage = document.getElementById('letterPage');
 
         // Validate the entered table number against the stored table ID
         if (tableNumber === storedTableID) {
