@@ -31,6 +31,7 @@
         <input type="text" id="studentID" placeholder="ใส่โลดจ้า">
         <p id="error-message" class="error">ไม่พบรหัสดังกล่าวในระบบ โปรดลองอีกครั้ง</p>
         <button id="submitID">ยืนยัน</button>
+	    <button id="returnToFirstPageBtn">กลับไปหน้าแรก</button>
     </div>
 
     <!-- Confirmation Page (Page 3) -->
@@ -107,7 +108,21 @@
 
 	// Call restorePageState when the page loads
 	window.onload = restorePageState;
+ // Function to fade in the main content
+    function fadeInMainContent() {
+        const mainContent = document.getElementById('mainContent');
+        mainContent.style.display = 'block';  // Show the content
+        setTimeout(() => {
+            mainContent.classList.add('show');  // Apply the fade-in class
+        }, 10);  // Delay to ensure visibility before applying fade-in
+    }
 
+    // Wait for the video to load before showing the main content
+    const backgroundVideo = document.getElementById('backgroundVideo');
+    backgroundVideo.addEventListener('loadeddata', function() {
+        console.log("Video has loaded. Showing main content...");
+        fadeInMainContent();
+    });
         // Function to fetch student data from JSON
         async function fetchStudentData() {
             try {
@@ -190,6 +205,14 @@
         const studentIDPage = document.getElementById('studentIDPage');
         transitionPages(letterPage, studentIDPage);  // Transition back to the Student ID page
     });
+	    
+    // Handle the new "Return to First Page" button to transition back to the introduction page
+    document.getElementById('returnToFirstPageBtn').addEventListener('click', function() {
+        const studentIDPage = document.getElementById('studentIDPage');
+        const introductionPage = document.getElementById('introductionPage');
+        transitionPages(studentIDPage, introductionPage);  // Transition back to the first page
+    });
+
 
 
         // Handle re-entering student ID
