@@ -20,7 +20,7 @@
             font-family: Arial, sans-serif;
         }
 		
-		body 
+		body {
 		@font-face {
     		font-family: 'jschanok';
     		src: url('assets/fonts/jschanok.ttf') format('truetype');
@@ -53,7 +53,7 @@
     		font-weight: normal;
     		font-style: normal;
 		}
-		
+		}
         /* Container for each page */
         .container {
             display: none;
