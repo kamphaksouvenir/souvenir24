@@ -170,3 +170,19 @@
 			font-family: 'soum';
 			max-width: 100%
 		}
+   #backgroundVideo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;  /* Push video behind other content */
+    }
+
+    .content {
+        position: relative;
+        z-index: 1;  /* Ensure the content is displayed above the video */
+        color: white;  /* Adjust text color to stand out against the video */
+        text-align: center;
+        padding: 20px;
+    }
