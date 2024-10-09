@@ -80,7 +80,7 @@ html, body {
             min-height: 100vh;
             opacity: 0;
 		z-index: 0;
-            transition: opacity 1.5s ease;  /* 1 seconds fade-in and fade-out */
+            transition: opacity 1.0s ease;  /* 1 seconds fade-in and fade-out */
         }
 
 	/* Show container */
