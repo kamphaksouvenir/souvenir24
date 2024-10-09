@@ -130,7 +130,7 @@
             localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
 
             // Instead of redirecting to question1.html, show the letter page
-            showLetterPage();
+            transitionPages(confirmationPage, letterPage);
         } else {
             // Show error message if the table number is incorrect
             tableErrorMessage.style.display = 'block';
