@@ -63,6 +63,7 @@
 	    text-align: center;
             min-height: 100vh;
             opacity: 0;
+		z-index: 0;
             transition: opacity 1.5s ease;  /* 1 seconds fade-in and fade-out */
         }
 
@@ -170,7 +171,8 @@
         left: 0;
         min-width: 100%;
         min-height: 100%;
-        z-index: -1;  /* Push video behind other content */
+        z-index: -1;
+	   object-fit:cover /* Push video behind other content */
     }
 
     .content {
