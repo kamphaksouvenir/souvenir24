@@ -104,13 +104,15 @@
 			font-size: 20vw;
 			color: #000000;
 			font-family: 'jschanok';
-			max-width: 100%
+			max-width: 100%;
+			max-height: 10%
 		}
 		#jschanok_h2 {
 			font-size: 15vw;
 			color: #000000;
 			font-family: 'jschanok';
 			max-width: 100%
+			max-height: 7.5%
 		}
 		#jongjaroen_h1 {
 			font-size: 20vw;
