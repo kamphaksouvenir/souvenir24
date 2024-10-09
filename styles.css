@@ -168,7 +168,8 @@
         min-width: 100%;
         min-height: 100%;
         z-index: -1;
-	   object-fit:cover /* Push video behind other content */
+	   object-fit:cover; /* Push video behind other content */
+	   object-position: 60% 10%
     }
 
     .content {
