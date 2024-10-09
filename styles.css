@@ -113,7 +113,8 @@
     		max-width: 90%; /* Set a max width so it doesn't span the entire screen */
     		margin: 20px auto; /* Center the container horizontally with margin */
     		border-radius: 10px; /* Optional: add rounded corners */
-    		text-align: left; /* Left-align the text */
+    		text-align: left; /* Left-align the text */;
+		font-family: Arial;
     		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for depth */
 	}
 			
