@@ -65,8 +65,7 @@ h1 {
 /* Full height container */
 html, body {
             height: 100%;
-            font-family: 'fcv', Arial, sans-serif, 'jschanok';
-            color: white
+            font-family: 'fcv', Arial, sans-serif, 'jschanok'
 	} 
 	
 		
@@ -77,6 +76,7 @@ html, body {
             justify-content: center;
             align-items: center;
 	    text-align: center;
+        color: white;
             min-height: 100vh;
             opacity: 0;
 		z-index: 0;
