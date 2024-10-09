@@ -40,16 +40,16 @@ h1 {
     		font-style: normal;
 		}
 		@font-face { 
-		font-family: 'jongjaroen';
-    		src: url('assets/fonts/jongjaroen.woff') format('woff');
+		font-family: 'fcv';
+    		src: url('assets/fonts/fcv_n.ttf') format('truetype');
     		font-weight: normal;
     		font-style: normal;
 		}
 		@font-face { 
-		font-family: 'tankk';
-    		src: url('assets/fonts/tankk.ttf') format('truetype');
-    		font-weight: normal;
-    		font-style: normal;
+		font-family: 'fcv';
+    		src: url('assets/fonts/fcv_b.ttf') format('truetype');
+    		font-weight: bold;
+    		font-style: bold;
 		}
 		@font-face { 
 		font-family: 'soum';
@@ -109,6 +109,8 @@ input {
 
 button {
             background-color: black;
+	    font-family: 'fcv';
+	    font-weight: bold;
             color: white;
             border: none;
             border-radius: 10px;
