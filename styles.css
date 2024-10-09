@@ -33,6 +33,24 @@
     		font-weight: normal;
     		font-style: normal;
 		}
+		@font-face { 
+		font-family: 'tankk';
+    		src: url('assets/fonts/tankk.ttf') format('truetype');
+    		font-weight: normal;
+    		font-style: normal;
+		}
+		@font-face { 
+		font-family: 'soum';
+    		src: url('assets/fonts/soum.ttf') format('truetype');
+    		font-weight: normal;
+    		font-style: normal;
+		}
+		@font-face { 
+		font-family: 'kalong_n';
+    		src: url('assets/fonts/jongjaroen.ttf') format('truetype');
+    		font-weight: normal;
+    		font-style: normal;
+		}
 		
         /* Container for each page */
         .container {
@@ -100,29 +118,47 @@
     		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for depth */
 	}
 			
-		#jschanok_h1 {
+		#c_1 {
 			font-size: 20vw;
 			color: #000000;
 			font-family: 'jschanok';
 			max-width: 100%;
 			max-height: 10%
 		}
-		#jschanok_h2 {
+		#c_2 {
 			font-size: 15vw;
 			color: #000000;
 			font-family: 'jschanok';
 			max-width: 100%
 			max-height: 7.5%
 		}
-		#jongjaroen_h1 {
+		#c_3 {
 			font-size: 20vw;
 			color: #FFFFFF;
 			font-family: 'jongjaroen';
 			max-width: 100%
 		}
-		#jongjaroen_h2 {
+		#c_4 {
 			font-size: 15vw;
 			color: #FFFFFF;
 			font-family: 'jongjaroen';
+			max-width: 100%
+		}
+		#c_5 {
+			font-size: 20vw;
+			color: #FFFFFF;
+			font-family: 'tankk';
+			max-width: 100%
+		}
+	        #c_6 {
+			font-size: 20vw;
+			color: #FFFFFF;
+			font-family: 'soum';
+			max-width: 100%
+		}
+		#c_7 {
+			font-size: 20vw;
+			color: #FFFFFF;
+			font-family: 'kalong_n';
 			max-width: 100%
 		}
