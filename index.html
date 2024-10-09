@@ -116,26 +116,26 @@
             }
         }
 
-        // Handle table number confirmation
-        document.getElementById('confirmTableNumber').addEventListener('click', function() {
-            const tableNumber = document.getElementById('tableNumber').value;
-            const storedTableID = localStorage.getItem('tempTableID');
-            const tableErrorMessage = document.getElementById('table-error-message');
+	    // Modify existing table confirmation handling to show letterPage
+    document.getElementById('confirmTableNumber').addEventListener('click', function() {
+        const tableNumber = document.getElementById('tableNumber').value;
+        const storedTableID = localStorage.getItem('tempTableID');
+        const tableErrorMessage = document.getElementById('table-error-message');
 
-            // Validate the entered table number against the stored table ID
-            if (tableNumber === storedTableID) {
-                // Move data from temp storage to permanent storage
-                localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
-                localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
-                localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
+        // Validate the entered table number against the stored table ID
+        if (tableNumber === storedTableID) {
+            // Move data from temp storage to permanent storage
+            localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
+            localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
+            localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
 
-                // Redirect to the next page or part of the story
-                window.location.href = 'question1.html';  // Proceed to the next section
-            } else {
-                // Show error message if the table number is incorrect
-                tableErrorMessage.style.display = 'block';
-            }
-        });
+            // Instead of redirecting to question1.html, show the letter page
+            showLetterPage();
+        } else {
+            // Show error message if the table number is incorrect
+            tableErrorMessage.style.display = 'block';
+        }
+    });
 
         // Handle re-entering student ID
         document.getElementById('reenterID').addEventListener('click', function() {
@@ -171,27 +171,6 @@
     function showLetterPage() {
         document.getElementById('letterPage').style.display = 'block';
     }
-
-    // Modify existing table confirmation handling to show letterPage
-    document.getElementById('confirmTableNumber').addEventListener('click', function() {
-        const tableNumber = document.getElementById('tableNumber').value;
-        const storedTableID = localStorage.getItem('tempTableID');
-        const tableErrorMessage = document.getElementById('table-error-message');
-
-        // Validate the entered table number against the stored table ID
-        if (tableNumber === storedTableID) {
-            // Move data from temp storage to permanent storage
-            localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
-            localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
-            localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
-
-            // Instead of redirecting to question1.html, show the letter page
-            showLetterPage();
-        } else {
-            // Show error message if the table number is incorrect
-            tableErrorMessage.style.display = 'block';
-        }
-    });
     </script>
 </body>
 </html>
