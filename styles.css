@@ -13,9 +13,7 @@
         min-height: 100%;
         z-index: -1;
 	object-fit: cover;
-	filter: blur(3px);
-	   ; /* Push video behind other content */
-	  
+	filter: blur(2px);
     }
 
 .content {
