@@ -167,7 +167,7 @@
 			max-width: 100%
 		}
    #backgroundVideo {
-        position: right;
+        position: fixed;
         top: 0;
         left: 0;
         min-width: 100%;
