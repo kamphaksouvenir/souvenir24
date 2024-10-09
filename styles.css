@@ -17,10 +17,9 @@
         /* Full height container */
         html, body {
             height: 100%;
-            font-family: Arial, sans-serif;
-        }
-		
-		body {
+            font-family: Arial, sans-serif, 'jschanok';
+        
+
 		@font-face {
     		font-family: 'jschanok';
     		src: url('assets/fonts/jschanok.ttf') format('truetype');
@@ -153,7 +152,7 @@
 			font-family: 'tankk';
 			max-width: 75%
 		}
-	    #c_6 {
+	    	#c_6 {
 			font-size: 20vw;
 			color: #000000;
 			font-family: 'soum';
