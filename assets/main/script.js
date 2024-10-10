@@ -1,4 +1,4 @@
- // Function to handle transitions between pages
+// Function to handle transitions between pages
         function transitionPages(fromPage, toPage) {
             fromPage.classList.remove('fade-in');
             setTimeout(() => {
