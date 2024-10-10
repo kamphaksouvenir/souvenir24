@@ -20,19 +20,19 @@
 /*font faces*/
 		@font-face {
     		font-family: 'jschanok';
-    		src: url('assets/fonts/jschanok.ttf') format('truetype');
+    		src: url('../fonts/jschanok.ttf') format('truetype');
     		font-weight: normal;
     		font-style: normal;
 		}
 		@font-face { 
 		font-family: 'fcv';
-    		src: url('assets/fonts/fcv_n.ttf') format('truetype');
+    		src: url('../fonts/fcv_n.ttf') format('truetype');
     		font-weight: normal;
     		font-style: normal;
 		}
 		@font-face { 
 		font-family: 'fcv';
-    		src: url('assets/fonts/fcv_b.ttf') format('truetype');
+    		src: url('../fonts/fcv_b.ttf') format('truetype');
     		font-weight: bold;
     		font-style: bold;
 		}
