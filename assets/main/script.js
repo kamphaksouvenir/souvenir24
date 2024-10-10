@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (reenterID) reenterID.addEventListener('click', handleReenterID);
     if (page1) page1.addEventListener("click", handleFrameClick);
     if (nextPageButton) nextPageButton.addEventListener("click", fadeOutBackgroundImage);
-};
+});
     // Function Definitions Below
 
     // Function to handle transitions between pages
