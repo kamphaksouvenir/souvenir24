@@ -11,7 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     nextPageButton.addEventListener("click", fadeOutBackgroundImage);
 
     // Function Definitions Below
-
+    function openDocument(){
+        window.open('#','_blank');
+    }
+    function openGoogleForm(){
+        window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
+    }
     // Function to handle transitions between pages
     function transitionPages(fromPage, toPage) {
         fromPage.classList.remove('fade-in');
@@ -169,11 +174,5 @@ document.addEventListener("DOMContentLoaded", function () {
         const confirmationPage = document.getElementById('confirmationPage');
         const studentIDPage = document.getElementById('studentIDPage');
         transitionPages(confirmationPage, studentIDPage);
-    }
-    function openDocument(){
-        window.open('#','_blank');
-    }
-    function openGoogleForm(){
-        window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
     }
 });
