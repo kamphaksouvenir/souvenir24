@@ -123,7 +123,7 @@ html, body {
     opacity: 1;
 }
         /* Input and button styling */
-input   {
+input, button   {
             padding: 10px;
             margin: 10px 0;
             font-size: 16px;
