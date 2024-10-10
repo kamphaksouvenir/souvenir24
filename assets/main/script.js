@@ -1,233 +1,204 @@
-// Function to handle transitions between pages
-        function transitionPages(fromPage, toPage) {
-            fromPage.classList.remove('fade-in');
+// Event Listeners at the Top
+document.addEventListener("DOMContentLoaded", function () {
+    // Attach all event listeners
+    document.getElementById('proceedButton').addEventListener('click', handleProceed);
+    document.getElementById('submitID').addEventListener('click', validateStudentID);
+    document.getElementById('confirmTableNumber').addEventListener('click', handleTableConfirmation);
+    document.getElementById('backToStudentIDBtn').addEventListener('click', handleBackToStudentID);
+    document.getElementById('returnToFirstPageBtn').addEventListener('click', handleReturnToFirstPage);
+    document.getElementById('reenterID').addEventListener('click', handleReenterID);
+    page1.addEventListener("click", handleFrameClick);
+    nextPageButton.addEventListener("click", fadeOutBackgroundImage);
+
+    // Function Definitions Below
+
+    // Function to handle transitions between pages
+    function transitionPages(fromPage, toPage) {
+        fromPage.classList.remove('fade-in');
+        setTimeout(() => {
+            fromPage.classList.remove('show');  // Hide the current page after fade-out
+
+            // Show and fade in the next page
+            toPage.classList.add('show');
             setTimeout(() => {
-                fromPage.classList.remove('show');  // Hide the current page after fade-out
-
-                // Show and fade in the next page
-                toPage.classList.add('show');
-                setTimeout(() => {
-                    toPage.classList.add('fade-in');
-                }, 10);  // Delay to ensure the element becomes visible before applying fade-in
-		 saveCurrentPage(toPage.id);
-            }, 2000);  // Wait for 3 seconds (fade-out duration)
-        }
-	// Function to store the current page in localStorage
-	function saveCurrentPage(pageID) {
-  	  localStorage.setItem('currentPage', pageID);
-	}
-	// Function to restore the page state based on localStorage
-	function restorePageState() {
-    const currentPage = localStorage.getItem('currentPage');
-    const studentID = localStorage.getItem('studentID');
-    const studentName = localStorage.getItem('studentName');
-    const tableID = localStorage.getItem('tableID');
-
-    if (currentPage) {
-        // Hide all pages
-        document.querySelectorAll('.container').forEach(page => {
-            page.classList.remove('show', 'fade-in');
-        });
-
-        // Show and fade in the saved page
-        const savedPage = document.getElementById(currentPage);
-        savedPage.classList.add('show');
-        setTimeout(() => {
-            savedPage.classList.add('fade-in');
-        }, 10);
-
-        // Restore student data if available
-        if (studentID) {
-            document.getElementById('studentID').value = studentID;
-        }
-        if (studentName) {
-            document.getElementById('nickname').textContent = studentName;
-        }
-        if (tableID) {
-            document.getElementById('tableNumber').value = tableID;
-        }
-   	 }
-	}
-
-	// Call restorePageState when the page loads
-	window.onload = restorePageState;
- // Function to fade in the main content
-    function fadeInMainContent() {
-        const mainContent = document.getElementById('mainContent');
-        mainContent.style.display = 'block';  // Show the content
-        setTimeout(() => {
-            mainContent.classList.add('show');  // Apply the fade-in class
-        }, 10);  // Delay to ensure visibility before applying fade-in
+                toPage.classList.add('fade-in');
+                saveCurrentPage(toPage.id);  // Save the current page in localStorage
+            }, 10);
+        }, 2000);  // Wait for 2 seconds (fade-out duration)
     }
 
-    // Wait for the video to load before showing the main content
+    // Function to store the current page in localStorage
+    function saveCurrentPage(pageID) {
+        localStorage.setItem('currentPage', pageID);
+    }
+
+    // Function to restore the page state based on localStorage
+    function restorePageState() {
+        const currentPage = localStorage.getItem('currentPage');
+        const studentID = localStorage.getItem('studentID');
+        const studentName = localStorage.getItem('studentName');
+        const tableID = localStorage.getItem('tableID');
+
+        if (currentPage) {
+            // Hide all pages
+            document.querySelectorAll('.container').forEach(page => {
+                page.classList.remove('show', 'fade-in');
+            });
+
+            // Show and fade in the saved page
+            const savedPage = document.getElementById(currentPage);
+            savedPage.classList.add('show');
+            setTimeout(() => {
+                savedPage.classList.add('fade-in');
+            }, 10);
+
+            // Restore student data if available
+            if (studentID) {
+                document.getElementById('studentID').value = studentID;
+            }
+            if (studentName) {
+                document.getElementById('nickname').textContent = studentName;
+            }
+            if (tableID) {
+                document.getElementById('tableNumber').value = tableID;
+            }
+        }
+    }
+
+    // Call restorePageState when the page loads
+    window.onload = restorePageState;
+
+    // Function to fade in the main content after video loads
+    function fadeInMainContent() {
+        const mainContent = document.getElementById('mainContent');
+        mainContent.style.display = 'block';
+        setTimeout(() => {
+            mainContent.classList.add('show');
+        }, 10);
+    }
+
     const backgroundVideo = document.getElementById('backgroundVideo');
-    backgroundVideo.addEventListener('loadeddata', function() {
+    backgroundVideo.addEventListener('loadeddata', function () {
         console.log("Video has loaded. Showing main content...");
         fadeInMainContent();
     });
-        // Function to fetch student data from JSON
-        async function fetchStudentData() {
-            try {
-                console.log("Fetching student data...");  // Debugging
-                const response = await fetch('assets/main/freshies.json');  // Make sure the path is correct
-                const studentData = await response.json();  // Convert the response to JSON format
-                console.log("Fetched student data:", studentData);  // Debugging
-                return studentData;
-            } catch (error) {
-                console.error("Error fetching student data:", error);
-            }
+
+    // Function to fetch student data from JSON
+    async function fetchStudentData() {
+        try {
+            const response = await fetch('assets/main/freshies.json');
+            const studentData = await response.json();
+            return studentData;
+        } catch (error) {
+            console.error("Error fetching student data:", error);
         }
+    }
 
-        // Handle the "I Agree and Proceed" button to transition from introduction to Student ID page
-        document.getElementById('proceedButton').addEventListener('click', function() {
-            const introductionPage = document.getElementById('introductionPage');
-            const studentIDPage = document.getElementById('studentIDPage');
-            transitionPages(introductionPage, studentIDPage);  // Transition to student ID input page
-        });
+    // Handle "I Agree and Proceed" button
+    function handleProceed() {
+        const introductionPage = document.getElementById('introductionPage');
+        const studentIDPage = document.getElementById('studentIDPage');
+        transitionPages(introductionPage, studentIDPage);
+    }
 
-        // Function to validate student ID and transition to confirmation page
-        async function validateStudentID() {
-            const studentID = document.getElementById('studentID').value;
-            const errorMessage = document.getElementById('error-message');
-            const studentIDPage = document.getElementById('studentIDPage');
-            const confirmationPage = document.getElementById('confirmationPage');
-            const nicknameElement = document.getElementById('nickname');
+    // Validate student ID
+    async function validateStudentID() {
+        const studentID = document.getElementById('studentID').value;
+        const errorMessage = document.getElementById('error-message');
+        const studentIDPage = document.getElementById('studentIDPage');
+        const confirmationPage = document.getElementById('confirmationPage');
+        const nicknameElement = document.getElementById('nickname');
 
-            const studentData = await fetchStudentData();  // Fetch student data from JSON file
-            console.log("Student ID entered:", studentID);  // Debugging
+        const studentData = await fetchStudentData();
+        const foundStudent = studentData.find(student => student.studentid == studentID);
 
-            // Check if the entered student ID exists in the JSON data
-            const foundStudent = studentData.find(student => student.studentid == studentID);
-            console.log("Found student:", foundStudent);  // Debugging
+        if (foundStudent) {
+            nicknameElement.textContent = foundStudent.nickname;
+            localStorage.setItem('tempStudentID', foundStudent.studentid);
+            localStorage.setItem('tempStudentName', foundStudent.nickname);
+            localStorage.setItem('tempTableID', foundStudent.tableid);
 
-            if (foundStudent) {
-                // Show the confirmation page and display the nickname
-                nicknameElement.textContent = foundStudent.nickname;
-                console.log("Displaying nickname:", foundStudent.nickname);  // Debugging
-
-                // Save student info temporarily for confirmation
-                localStorage.setItem('tempStudentID', foundStudent.studentid);
-                localStorage.setItem('tempStudentName', foundStudent.nickname);
-                localStorage.setItem('tempTableID', foundStudent.tableid);
-
-                // Transition from ID input page to confirmation page
-                transitionPages(studentIDPage, confirmationPage);
-            } else {
-                // Show error message if the student ID is not found
-                errorMessage.style.display = 'block';
-            }
+            transitionPages(studentIDPage, confirmationPage);
+        } else {
+            errorMessage.style.display = 'block';
         }
+    }
 
-	    // Modify existing table confirmation handling to show letterPage
-    document.getElementById('confirmTableNumber').addEventListener('click', function() {
-    const tableNumber = document.getElementById('tableNumber').value;
-    const storedTableID = localStorage.getItem('tempTableID');
-    const tableErrorMessage = document.getElementById('table-error-message');
-    const confirmationPage = document.getElementById('confirmationPage');
-    const letterPage = document.getElementById('letterPage');
-	    
+    // Handle table confirmation
+    function handleTableConfirmation() {
+        const tableNumber = document.getElementById('tableNumber').value;
+        const storedTableID = localStorage.getItem('tempTableID');
+        const tableErrorMessage = document.getElementById('table-error-message');
+        const confirmationPage = document.getElementById('confirmationPage');
+        const letterPage = document.getElementById('letterPage');
 
-        // Validate the entered table number against the stored table ID
         if (tableNumber === storedTableID) {
-            // Move data from temp storage to permanent storage
             localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
             localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
             localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
-   
-	// Fade in the background image and start showing texts on click
+
             fadeInBackgroundImage();
-            confirmationPage.style.display = "none";  // Hide confirmation page
-            page1.style.display = "block"// Show the page content
+            confirmationPage.style.display = "none";
+            page1.style.display = "block";
         } else {
-            // Show error message if the table number is incorrect
             tableErrorMessage.style.display = "block";
         }
-    });
-	     // Handle back button click to return to the Student ID page
-    document.getElementById('backToStudentIDBtn').addEventListener('click', function() {
+    }
+
+    // Handle back button to return to Student ID page
+    function handleBackToStudentID() {
         const letterPage = document.getElementById('letterPage');
         const studentIDPage = document.getElementById('studentIDPage');
-        transitionPages(letterPage, studentIDPage);  // Transition back to the Student ID page
-    });
-	    
-    // Handle the new "Return to First Page" button to transition back to the introduction page
-    document.getElementById('returnToFirstPageBtn').addEventListener('click', function() {
+        transitionPages(letterPage, studentIDPage);
+    }
+
+    // Handle "Return to First Page" button
+    function handleReturnToFirstPage() {
         const studentIDPage = document.getElementById('studentIDPage');
         const introductionPage = document.getElementById('introductionPage');
-        transitionPages(studentIDPage, introductionPage);  // Transition back to the first page
-    });
-
-
-
-        // Handle re-entering student ID
-        document.getElementById('reenterID').addEventListener('click', function() {
-            // Clear temp data and return to the ID input page
-            localStorage.removeItem('tempStudentID');
-            localStorage.removeItem('tempStudentName');
-            localStorage.removeItem('tempTableID');
-            document.getElementById('studentID').value = '';  // Clear the input field
-            document.getElementById('tableNumber').value = '';  // Clear the table number field
-            document.getElementById('table-error-message').style.display = 'none';  // Hide the table error
-
-            const confirmationPage = document.getElementById('confirmationPage');
-            const studentIDPage = document.getElementById('studentIDPage');
-            transitionPages(confirmationPage, studentIDPage);  // Transition back to ID input page
-        });
-
-        // Handle the submit button click to validate and proceed
-        document.getElementById('submitID').addEventListener('click', validateStudentID);
-
-		// Placeholder function to open the source document for "Letter to You"
-    function openDocument() {
-        // Replace the '#' with the actual document link later
-        window.open('#', '_blank');
+        transitionPages(studentIDPage, introductionPage);
     }
-//FUNCTIONSTARTS
-document.addEventListener("DOMContentLoaded", function () {
-    const confirmationPage = document.getElementById("confirmationPage");
-    const page1 = document.getElementById("page1");
-    const textContainer = document.getElementById("textContainer");
-    const nextPageButton = document.getElementById("nextPageButton");
-    const backgroundImage = document.getElementById("backgroundImage");
 
-    textContainer.style.opacity = 0;  // Start with fully transparent text
-    textContainer.style.fontSize = "24px";
-    textContainer.style.transition = "opacity 0.5s ease-in-out";
-    nextPageButton.style.opacity = 0;  // Button initially hidden
-    nextPageButton.style.transition = "opacity 0.5s ease-in-out";
+    // Handle re-entering student ID
+    function handleReenterID() {
+        localStorage.removeItem('tempStudentID');
+        localStorage.removeItem('tempStudentName');
+        localStorage.removeItem('tempTableID');
+        document.getElementById('studentID').value = '';
+        document.getElementById('tableNumber').value = '';
+        document.getElementById('table-error-message').style.display = 'none';
 
-    // Array of texts for each "frame"
+        const confirmationPage = document.getElementById('confirmationPage');
+        const studentIDPage = document.getElementById('studentIDPage');
+        transitionPages(confirmationPage, studentIDPage);
+    }
+
+    // Handle frame-based text transitions
     const texts = [
-        "This is the first message.",
-        "Now, here's the second message.",
-        "And this is the third one.",
-        "The fourth message appears.",
-        "Here's the fifth message.",
-        "Almost there, the sixth message.",
-        "Finally, the seventh message."
+        "Message 1: Welcome to the journey.",
+        "Message 2: Let's begin.",
+        "Message 3: You're halfway there.",
+        "Message 4: Keep going!",
+        "Message 5: Almost done.",
+        "Message 6: One step to go.",
+        "Message 7: You've made it!"
     ];
-
     let currentTextIndex = 0;
 
-    // Function to show the next text with fading in, stacking the texts
-  function showNextText() {
+    function handleFrameClick() {
         if (currentTextIndex < texts.length) {
-            // Create a new paragraph element for each message
             const newMessage = document.createElement("p");
             newMessage.textContent = texts[currentTextIndex];
-            newMessage.style.opacity = 0;  // Start with invisible text
-            newMessage.style.transition = "opacity 0.5s ease-in-out";  // Transition effect for fade in
+            newMessage.style.opacity = 0;
+            newMessage.style.transition = "opacity 0.5s ease-in-out";
             textContainer.appendChild(newMessage);
 
-            // Fade in the new message
             setTimeout(() => {
                 newMessage.style.opacity = 1;
-            }, 100);  // Small delay to ensure proper fade-in effect
+            }, 100);
 
             currentTextIndex++;
         } else {
-            // On the 8th click, fade in the "ไปกล่องจดหมาย" button
             setTimeout(() => {
                 nextPageButton.style.opacity = 1;
                 nextPageButton.classList.remove("hidden");
@@ -235,26 +206,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Attach the click event to trigger the text change
-    page1.addEventListener("click", function () {
-        if (currentTextIndex < texts.length || currentTextIndex === texts.length) {
-            showNextText();  // Show the next text or reveal the button on the last click
-        }
-    });
-
-    // Fade in the static background image when moving into the text-based transition
+    // Fade in the background image
     function fadeInBackgroundImage() {
-        backgroundImage.style.opacity = 1;  // Fade in the static image
+        backgroundImage.style.opacity = 1;
+    }
+
+    // Fade out the background image
+    function fadeOutBackgroundImage() {
+        backgroundImage.style.opacity = 0;
     }
 });
-//FUNCTIONSTOPS
-    // Function to open the Google Form for "Letter to Future You"
-    function openGoogleForm() {
-        // Replace the link with your actual Google Form URL
-        window.open('https://forms.gle/DgNatixPiSxzHqC27', '_blank');
-    }
-
-    // Display the letter page after confirming the table number
-    function showLetterPage() {
-        document.getElementById('letterPage').style.display = 'block';
-    }
