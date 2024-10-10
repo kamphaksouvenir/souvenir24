@@ -137,7 +137,8 @@
    
 	// Fade in the background image and start showing texts on click
             fadeInBackgroundImage();
-            page1.style.display = "block";  // Show the page content
+            confirmationPage.style.display = "none";  // Hide confirmation page
+            page1.style.display = "block"// Show the page content
         } else {
             // Show error message if the table number is incorrect
             tableErrorMessage.style.display = "block";
