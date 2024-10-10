@@ -175,7 +175,12 @@
 
         // Handle the submit button click to validate and proceed
         document.getElementById('submitID').addEventListener('click', validateStudentID);
-		 
+
+//transition to letter page
+
+
+
+
 		// Placeholder function to open the source document for "Letter to You"
     function openDocument() {
         // Replace the '#' with the actual document link later
