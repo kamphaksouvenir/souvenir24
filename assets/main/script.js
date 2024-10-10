@@ -70,7 +70,7 @@
         async function fetchStudentData() {
             try {
                 console.log("Fetching student data...");  // Debugging
-                const response = await fetch('freshies.json');  // Make sure the path is correct
+                const response = await fetch(freshies.json);  // Make sure the path is correct
                 const studentData = await response.json();  // Convert the response to JSON format
                 console.log("Fetched student data:", studentData);  // Debugging
                 return studentData;
