@@ -101,12 +101,27 @@ html, body {
 .show {
             display: flex;  /* Makes the container visible */
         }
+.hidden {
+	display: none;
+}
 
 	/* Fade-in effect */
 .fade-in {
             opacity: 1;
         }
+//add-on
+.page {
+	    position: relative;
+    z-index: 1;  /* In front of video and image */
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
+.page.active {
+    display: block;
+    opacity: 1;
+}
         /* Input and button styling */
 input, button {
             padding: 10px;
