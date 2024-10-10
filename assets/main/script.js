@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to fetch student data from JSON
     async function fetchStudentData() {
         try {
-            const response = await fetch('assets/source/freshies.json');
+            const response = await fetch('assets/main/freshies.json');
             const studentData = await response.json();
             return studentData;
         } catch (error) {
