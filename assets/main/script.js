@@ -137,9 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
             localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
 
-            fadeInBackgroundImage();
-            confirmationPage.style.display = "none";
-            page1.style.display = "block";
+            transitionPages(confirmationPage, letterPage);
         } else {
             tableErrorMessage.style.display = "block";
         }
@@ -171,48 +169,5 @@ document.addEventListener("DOMContentLoaded", function () {
         const confirmationPage = document.getElementById('confirmationPage');
         const studentIDPage = document.getElementById('studentIDPage');
         transitionPages(confirmationPage, studentIDPage);
-    }
-
-    // Handle frame-based text transitions
-    const texts = [
-        "Message 1: Welcome to the journey.",
-        "Message 2: Let's begin.",
-        "Message 3: You're halfway there.",
-        "Message 4: Keep going!",
-        "Message 5: Almost done.",
-        "Message 6: One step to go.",
-        "Message 7: You've made it!"
-    ];
-    let currentTextIndex = 0;
-
-    function handleFrameClick() {
-        if (currentTextIndex < texts.length) {
-            const newMessage = document.createElement("p");
-            newMessage.textContent = texts[currentTextIndex];
-            newMessage.style.opacity = 0;
-            newMessage.style.transition = "opacity 0.5s ease-in-out";
-            textContainer.appendChild(newMessage);
-
-            setTimeout(() => {
-                newMessage.style.opacity = 1;
-            }, 100);
-
-            currentTextIndex++;
-        } else {
-            setTimeout(() => {
-                nextPageButton.style.opacity = 1;
-                nextPageButton.classList.remove("hidden");
-            }, 500);
-        }
-    }
-
-    // Fade in the background image
-    function fadeInBackgroundImage() {
-        backgroundImage.style.opacity = 1;
-    }
-
-    // Fade out the background image
-    function fadeOutBackgroundImage() {
-        backgroundImage.style.opacity = 0;
     }
 });
