@@ -207,6 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fade in the background image
     function fadeInBackgroundImage() {
+        const backgroundImage = document.getElementbyId('backgroundImage')
         backgroundImage.style.opacity = 1;
     }
 
