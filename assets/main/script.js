@@ -179,7 +179,7 @@
 //new function starts
 document.addEventListener("DOMContentLoaded", function () {
     const page1 = document.getElementById("page1");
-    const page2 = document.getElementById("page2");
+    const page2 = document.getElementById("letterPage");
     const textContainer = document.getElementById("textContainer");
     const nextPageButton = document.getElementById("nextPageButton");
     const backgroundImage = document.getElementById("backgroundImage");
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // When "ไปกล่องจดหมาย" is clicked, transition to the letter page and fade out background image
     nextPageButton.addEventListener("click", function () {
         fadeOutBackgroundImage();  // Fade out the background image
-        miniTransition(page1, page2, 7);  // Mini-transition to the next page
+        miniTransition(page1, letterPage, 7);  // Mini-transition to the next page
     });
 
     // Fade in the static background image when moving into the text-based transition
