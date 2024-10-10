@@ -100,7 +100,6 @@ html, body {
 	/* Show container */
 .show {
             display: flex;
-	    opacity: 1/* Makes the container visible */
         }
 .hidden {
 	display: none;
