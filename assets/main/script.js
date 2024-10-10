@@ -173,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function openDocument(){
         window.open('#','_blank');
     }
-    }
     function openGoogleForm(){
         window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
     }
