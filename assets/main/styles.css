@@ -109,6 +109,7 @@ html, body {
 	/* Fade-in effect */
 .fade-in {
             opacity: 1;
+	transition: opactiy 0.5s ease-in-out;
         }
 //add-on
 .page {
