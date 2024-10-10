@@ -170,4 +170,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const studentIDPage = document.getElementById('studentIDPage');
         transitionPages(confirmationPage, studentIDPage);
     }
+    function openDocument(){
+        window.open('#','_blank');
+    }
+    }
+    function openGoogleForm() {
+        window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
+    }
 });
