@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const storedTableID = localStorage.getItem('tempTableID');
         const tableErrorMessage = document.getElementById('table-error-message');
         const confirmationPage = document.getElementById('confirmationPage');
-        const letterPage = document.getElementById('letterPage');
+        const page1 = document.getElementById('page1');
 
         if (tableNumber === storedTableID) {
             localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
