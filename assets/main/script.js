@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentTextIndex = 0;
 
     // Function to show the next text with fading in, stacking the texts
-    function showNextText() {
+  function showNextText() {
         if (currentTextIndex < texts.length) {
             // Create a new paragraph element for each message
             const newMessage = document.createElement("p");
@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 nextPageButton.classList.remove("hidden");
             }, 500);
         }
-    }  
+    }
 
     // Attach the click event to trigger the text change
     page1.addEventListener("click", function () {
