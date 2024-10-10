@@ -138,8 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
 
             fadeInBackgroundImage();
-            confirmationPage.style.display = "none";
-            page1.style.display = "block";
+            transitionPages(confirmationPage, page1);
         } else {
             tableErrorMessage.style.display = "block";
         }
