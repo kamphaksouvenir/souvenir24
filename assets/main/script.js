@@ -134,12 +134,13 @@
             localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
             localStorage.setItem('studentName', localStorage.getItem('tempStudentName'));
             localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
-
-            // Instead of redirecting to question1.html, show the letter page
-            transitionPages(confirmationPage, letterPage);
+   
+	// Fade in the background image and start showing texts on click
+            fadeInBackgroundImage();
+            page1.style.display = "block";  // Show the page content
         } else {
             // Show error message if the table number is incorrect
-            tableErrorMessage.style.display = 'block';
+            tableErrorMessage.style.display = "block";
         }
     });
 	     // Handle back button click to return to the Student ID page
@@ -181,7 +182,71 @@
         // Replace the '#' with the actual document link later
         window.open('#', '_blank');
     }
+//FUNCTIONSTARTS
+document.addEventListener("DOMContentLoaded", function () {
+    const confirmationPage = document.getElementById("confirmationPage");
+    const page1 = document.getElementById("page1");
+    const textContainer = document.getElementById("textContainer");
+    const nextPageButton = document.getElementById("nextPageButton");
+    const backgroundImage = document.getElementById("backgroundImage");
 
+    textContainer.style.opacity = 0;  // Start with fully transparent text
+    textContainer.style.fontSize = "24px";
+    textContainer.style.transition = "opacity 0.5s ease-in-out";
+    nextPageButton.style.opacity = 0;  // Button initially hidden
+    nextPageButton.style.transition = "opacity 0.5s ease-in-out";
+
+    // Array of texts for each "frame"
+    const texts = [
+        "This is the first message.",
+        "Now, here's the second message.",
+        "And this is the third one.",
+        "The fourth message appears.",
+        "Here's the fifth message.",
+        "Almost there, the sixth message.",
+        "Finally, the seventh message."
+    ];
+
+    let currentTextIndex = 0;
+
+    // Function to show the next text with fading in, stacking the texts
+    function showNextText() {
+        if (currentTextIndex < texts.length) {
+            // Create a new paragraph element for each message
+            const newMessage = document.createElement("p");
+            newMessage.textContent = texts[currentTextIndex];
+            newMessage.style.opacity = 0;  // Start with invisible text
+            newMessage.style.transition = "opacity 0.5s ease-in-out";  // Transition effect for fade in
+            textContainer.appendChild(newMessage);
+
+            // Fade in the new message
+            setTimeout(() => {
+                newMessage.style.opacity = 1;
+            }, 100);  // Small delay to ensure proper fade-in effect
+
+            currentTextIndex++;
+        } else {
+            // On the 8th click, fade in the "ไปกล่องจดหมาย" button
+            setTimeout(() => {
+                nextPageButton.style.opacity = 1;
+                nextPageButton.classList.remove("hidden");
+            }, 500);
+        }
+    }  
+
+    // Attach the click event to trigger the text change
+    page1.addEventListener("click", function () {
+        if (currentTextIndex < texts.length || currentTextIndex === texts.length) {
+            showNextText();  // Show the next text or reveal the button on the last click
+        }
+    });
+
+    // Fade in the static background image when moving into the text-based transition
+    function fadeInBackgroundImage() {
+        backgroundImage.style.opacity = 1;  // Fade in the static image
+    }
+});
+//FUNCTIONSTOPS
     // Function to open the Google Form for "Letter to Future You"
     function openGoogleForm() {
         // Replace the link with your actual Google Form URL
