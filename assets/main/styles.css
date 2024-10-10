@@ -90,16 +90,17 @@ html, body {
             justify-content: center;
             align-items: center;
 	    text-align: center;
-        color: white;
+            color: white;
             min-height: 100vh;
             opacity: 0;
-		z-index: 1;
+	     z-index: 1;
             transition: opacity 0.5s ease;  /* 1 seconds fade-in and fade-out */
         }
 
 	/* Show container */
 .show {
-            display: flex;  /* Makes the container visible */
+            display: flex;
+	    opacity: 1/* Makes the container visible */
         }
 .hidden {
 	display: none;
@@ -177,6 +178,7 @@ button:active {
 			text-align: center;
 			font-size: 24px;
 			color: white;
+			opacity: 1;
 		}
 		#nextPageButton {
 			background-color: black;
