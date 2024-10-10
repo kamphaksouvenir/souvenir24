@@ -123,7 +123,7 @@ html, body {
     opacity: 1;
 }
         /* Input and button styling */
-input, button {
+input   {
             padding: 10px;
             margin: 10px 0;
             font-size: 16px;
@@ -168,7 +168,26 @@ button:active {
 		font-family: Arial;
     		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for depth */
 	}
-			
+		#textContainer {
+			margin: 20px;
+			padding: 10px;
+			text-align: center;
+			font-size: 24px;
+			color: white;
+		}
+		#nextPageButton {
+			background-color: black;
+	    font-family: 'fcv';
+	    font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+		}
+		#nextPageButton.hidden {
+			display: none;
+		}
 		#c_1 {
 			font-size: 20vw;
 			color: #ffffff;
