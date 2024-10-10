@@ -23,7 +23,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('assets/images/background.jpg');
+    background-image: url('assets/images/background.jpeg');
     background-size: cover;
     background-position: center;
     opacity: 0;  /* Start fully transparent */
