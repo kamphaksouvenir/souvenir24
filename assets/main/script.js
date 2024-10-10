@@ -1,25 +1,15 @@
 // Event Listeners at the Top
 document.addEventListener("DOMContentLoaded", function () {
-    const proceedButton = document.getElementById('proceedButton');
-    const submitID = document.getElementById('submitID');
-    const confirmTableNumber = document.getElementById('confirmTableNumber');
-    const backToStudentIDBtn = document.getElementById('backToStudentIDBtn');
-    const returnToFirstPageBtn = document.getElementById('returnToFirstPageBtn');
-    const reenterID = document.getElementById('reenterID');
-    const page1 = document.getElementById('page1');
-    const nextPageButton = document.getElementById('nextPageButton');
-    const backgroundImage = document.getElementById('backgroundImage');
-    
-    // Attach event listeners only if elements exist
-    if (proceedButton) proceedButton.addEventListener('click', handleProceed);
-    if (submitID) submitID.addEventListener('click', validateStudentID);
-    if (confirmTableNumber) confirmTableNumber.addEventListener('click', handleTableConfirmation);
-    if (backToStudentIDBtn) backToStudentIDBtn.addEventListener('click', handleBackToStudentID);
-    if (returnToFirstPageBtn) returnToFirstPageBtn.addEventListener('click', handleReturnToFirstPage);
-    if (reenterID) reenterID.addEventListener('click', handleReenterID);
-    if (page1) page1.addEventListener("click", handleFrameClick);
-    if (nextPageButton) nextPageButton.addEventListener("click", fadeOutBackgroundImage);
-});
+    // Attach all event listeners
+    document.getElementById('proceedButton').addEventListener('click', handleProceed);
+    document.getElementById('submitID').addEventListener('click', validateStudentID);
+    document.getElementById('confirmTableNumber').addEventListener('click', handleTableConfirmation);
+    document.getElementById('backToStudentIDBtn').addEventListener('click', handleBackToStudentID);
+    document.getElementById('returnToFirstPageBtn').addEventListener('click', handleReturnToFirstPage);
+    document.getElementById('reenterID').addEventListener('click', handleReenterID);
+    page1.addEventListener("click", handleFrameClick);
+    nextPageButton.addEventListener("click", fadeOutBackgroundImage);
+
     // Function Definitions Below
 
     // Function to handle transitions between pages
@@ -96,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to fetch student data from JSON
     async function fetchStudentData() {
         try {
-            const response = await fetch('assets/main/freshies.json');
+            const response = await fetch('assets/source/freshies.json');
             const studentData = await response.json();
             return studentData;
         } catch (error) {
@@ -140,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const storedTableID = localStorage.getItem('tempTableID');
         const tableErrorMessage = document.getElementById('table-error-message');
         const confirmationPage = document.getElementById('confirmationPage');
-        const page1 = document.getElementById('page1');
+        const letterPage = document.getElementById('letterPage');
 
         if (tableNumber === storedTableID) {
             localStorage.setItem('studentID', localStorage.getItem('tempStudentID'));
@@ -148,7 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('tableID', localStorage.getItem('tempTableID'));
 
             fadeInBackgroundImage();
-            transitionPages(confirmationPage, page1);
+            confirmationPage.style.display = "none";
+            page1.style.display = "block";
         } else {
             tableErrorMessage.style.display = "block";
         }
@@ -217,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fade in the background image
     function fadeInBackgroundImage() {
-        const backgroundImage = document.getElementById('backgroundImage')
         backgroundImage.style.opacity = 1;
     }
 
