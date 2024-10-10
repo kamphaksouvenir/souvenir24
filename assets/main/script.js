@@ -176,10 +176,117 @@
         // Handle the submit button click to validate and proceed
         document.getElementById('submitID').addEventListener('click', validateStudentID);
 
-//transition to letter page
+//new function starts
+document.addEventListener("DOMContentLoaded", function () {
+    const page1 = document.getElementById("page1");
+    const page2 = document.getElementById("page2");
+    const textContainer = document.getElementById("textContainer");
+    const nextPageButton = document.getElementById("nextPageButton");
+    const backgroundImage = document.getElementById("backgroundImage");
 
+    textContainer.style.opacity = 0;  // Start with fully transparent text
+    textContainer.style.fontSize = "24px";
+    textContainer.style.transition = "opacity 0.5s ease-in-out";
+    nextPageButton.style.opacity = 0;  // Button initially hidden
+    nextPageButton.style.transition = "opacity 0.5s ease-in-out";
 
+    // Array of texts for each "frame"
+    const texts = [
+        "This is the first message.",
+        "Now, here's the second message.",
+        "And this is the third one.",
+        "Finally, the last message."
+    ];
 
+    let currentTextIndex = 0;
+
+    // Function to show the next text with fading in
+    function showNextText() {
+        if (currentTextIndex < texts.length) {
+            textContainer.style.opacity = 0;  // Start by fading out the old text
+            setTimeout(() => {
+                textContainer.textContent = texts[currentTextIndex];  // Change the text
+                textContainer.style.opacity = 1;  // Fade in the new text
+            }, 500);  // Delay for fading out effect
+
+            currentTextIndex++;
+        } else {
+            // After all texts are shown, fade in the button
+            setTimeout(() => {
+                nextPageButton.style.opacity = 1;
+                nextPageButton.classList.remove("hidden");
+            }, 500);
+        }
+    }
+
+    // Attach the click event to trigger the text change and transition
+    page1.addEventListener("click", function () {
+        if (currentTextIndex < texts.length) {
+            showNextText();  // Show the next text
+        }
+    });
+
+    // When "ไปกล่องจดหมาย" is clicked, transition to the letter page and fade out background image
+    nextPageButton.addEventListener("click", function () {
+        fadeOutBackgroundImage();  // Fade out the background image
+        miniTransition(page1, page2, 7);  // Mini-transition to the next page
+    });
+
+    // Fade in the static background image when moving into the text-based transition
+    function fadeInBackgroundImage() {
+        backgroundImage.style.opacity = 1;  // Fade in the static image
+    }
+
+    // Fade out the static background image when going to the next page
+    function fadeOutBackgroundImage() {
+        backgroundImage.style.opacity = 0;  // Fade out the static image
+    }
+
+    // Mini-transition function (same as before)
+    function miniTransition(currentPage, nextPage, frames = 7) {
+        let opacity = 1;
+        let frame = 0;
+
+        function fadeOut() {
+            if (frame <= frames) {
+                opacity -= 1 / frames;
+                currentPage.style.opacity = opacity;
+                frame++;
+                requestAnimationFrame(fadeOut);
+            } else {
+                currentPage.classList.remove("active");
+                currentPage.style.display = "none";
+                frame = 0;
+                opacity = 0;
+                nextPage.style.display = "block";
+                requestAnimationFrame(fadeIn);
+            }
+        }
+
+        function fadeIn() {
+            if (frame <= frames) {
+                opacity += 1 / frames;
+                nextPage.style.opacity = opacity;
+                frame++;
+                requestAnimationFrame(fadeIn);
+            } else {
+                nextPage.classList.add("active");
+            }
+        }
+
+        fadeOut();
+    }
+
+    // Trigger the image fade-in after the table ID confirmation
+    function onTableIdConfirmation() {
+        fadeInBackgroundImage();  // Call this function when the student confirms their table ID
+    }
+
+    // Example: Call onTableIdConfirmation when table ID is confirmed
+    // You can link this to your actual table ID confirmation logic
+    onTableIdConfirmation();  // For demo purposes
+});
+//newfuctionends
 
 		// Placeholder function to open the source document for "Letter to You"
     function openDocument() {
