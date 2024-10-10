@@ -17,20 +17,6 @@
 	filter: blur(6px);
     }
 
-#backgroundImage {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../images/background.jpeg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0;  /* Start fully transparent */
-    z-index: -1; /* In front of video, behind content */
-    transition: opacity 1s ease-in-out;  /* Smooth fade-in */
-}
-
 /*font faces*/
 		@font-face {
     		font-family: 'jschanok';
@@ -172,28 +158,7 @@ button:active {
 		font-family: Arial;
     		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for depth */
 	}
-		#textContainer {
-			margin: 20px;
-			padding: 10px;
-			text-align: center;
-			font-size: 24px;
-			color: white;
-			z-index: 1;
-			opacity: 1;
-		}
-		#nextPageButton {
-			background-color: black;
-	    font-family: 'fcv';
-	    font-weight: bold;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: opacity 0.5s ease;
-		}
-		#nextPageButton.hidden {
-			display: none;
-		}
+
 		#c_1 {
 			font-size: 20vw;
 			color: #ffffff;
