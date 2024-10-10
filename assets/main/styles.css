@@ -123,14 +123,11 @@ html, body {
     opacity: 1;
 }
         /* Input and button styling */
-input, button   {
+input  {
             padding: 10px;
             margin: 10px 0;
             font-size: 16px;
-		font-weight: bold
-        }
-
-input {
+	    font-weight: bold;
             width: 250px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -138,9 +135,13 @@ input {
 
 button {
             background-color: black;
+	    display: inline-block;
+	    padding : 10px 20px;
 	    font-family: 'fcv';
 	    font-weight: bold;
             color: white;
+	    text-align: center;
+	    white-space: nowrap;
             border: none;
             border-radius: 10px;
             cursor: pointer;
