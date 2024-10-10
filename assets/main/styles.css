@@ -179,6 +179,7 @@ button:active {
 			text-align: center;
 			font-size: 24px;
 			color: white;
+			z-index: 1;
 			opacity: 1;
 		}
 		#nextPageButton {
