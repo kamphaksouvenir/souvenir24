@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 toPage.classList.add('fade-in');
                 saveCurrentPage(toPage.id);  // Save the current page in localStorage
             }, 10);
-        }, 2000);  // Wait for 2 seconds (fade-out duration)
+        }, 1500);  // Wait for 2 seconds (fade-out duration)
     }
 
     // Function to store the current page in localStorage
