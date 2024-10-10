@@ -136,7 +136,8 @@ input  {
 button {
             background-color: black;
 	    display: inline-block;
-	    padding : 10px 20px;
+	    padding: 10px;
+	    font-size: 16px;
 	    font-family: 'fcv';
 	    font-weight: bold;
             color: white;
@@ -145,6 +146,7 @@ button {
             border: none;
             border-radius: 10px;
             cursor: pointer;
+	    margin: 10px;
             transition: opacity 0.5s ease;
         }
 
