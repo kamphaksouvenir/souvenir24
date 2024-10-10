@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.open('#','_blank');
     }
     }
-    function openGoogleForm() {
+    function openGoogleForm(){
         window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
     }
 });
