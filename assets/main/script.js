@@ -7,9 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('backToStudentIDBtn').addEventListener('click', handleBackToStudentID);
     document.getElementById('returnToFirstPageBtn').addEventListener('click', handleReturnToFirstPage);
     document.getElementById('reenterID').addEventListener('click', handleReenterID);
-    page1.addEventListener("click", handleFrameClick);
-    nextPageButton.addEventListener("click", fadeOutBackgroundImage);
-
+  
     
     // Add event listener for "Letter to You" button
     document.getElementById('letterToYouButton').addEventListener('click', function () {
