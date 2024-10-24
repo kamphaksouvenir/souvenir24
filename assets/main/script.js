@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     
     // Add event listener for "Letter to You" button
-    document.getElementById('letterToYouButton').addEventListener('click', function () {
+    document.getElementById('letterToYouBtn').addEventListener('click', function () {
         const docLink = localStorage.getItem('doclink');
         if (docLink) {
             window.open(docLink, '_blank');
