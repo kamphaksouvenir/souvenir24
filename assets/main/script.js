@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('tempStudentID', foundStudent.studentid);
             localStorage.setItem('tempStudentName', foundStudent.nickname);
             localStorage.setItem('tempTableID', foundStudent.tableid);
+            localStorage.setItem('doclink', foundStudent.doclink); // Store the doclink in localStorage
 
             transitionPages(studentIDPage, confirmationPage);
         } else {
@@ -174,5 +175,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const confirmationPage = document.getElementById('confirmationPage');
         const studentIDPage = document.getElementById('studentIDPage');
         transitionPages(confirmationPage, studentIDPage);
+    }
+    
+    // Event listener for "Letter to You" button
+document.getElementById('letterToYouButton').addEventListener('click', function () {
+    const docLink = localStorage.getItem('doclink');
+    if (docLink) {
+        window.open(docLink, '_blank');  // Open the Google Docs link stored in localStorage
+    } else {
+        console.error("Document link not found in localStorage");
     }
 });
