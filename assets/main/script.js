@@ -10,10 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
     page1.addEventListener("click", handleFrameClick);
     nextPageButton.addEventListener("click", fadeOutBackgroundImage);
 
-    // Function Definitions Below
-    function openDocument(){
-        window.open('#','_blank');
+    
+    // Add event listener for "Letter to You" button
+    document.getElementById('letterToYouButton').addEventListener('click', function () {
+        const docLink = localStorage.getItem('doclink');
+        if (docLink) {
+            window.open(docLink, '_blank');
+        } else {
+            console.error("Document link not found in localStorage");
+    // Add event listener for "Letter to Future You" button
+    document.getElementById('letterToFutureYouBtn').addEventListener('click', openGoogleForm);
     }
+        
     function openGoogleForm(){
         window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
     }
@@ -122,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('tempStudentID', foundStudent.studentid);
             localStorage.setItem('tempStudentName', foundStudent.nickname);
             localStorage.setItem('tempTableID', foundStudent.tableid);
+            localStorage.setItem('doclink', foundStudent.doclink);  // Store the doclink in localStorage
 
             transitionPages(studentIDPage, confirmationPage);
         } else {
