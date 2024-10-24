@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('backToStudentIDBtn').addEventListener('click', handleBackToStudentID);
     document.getElementById('returnToFirstPageBtn').addEventListener('click', handleReturnToFirstPage);
     document.getElementById('reenterID').addEventListener('click', handleReenterID);
+    page1.addEventListener("click", handleFrameClick);
+    nextPageButton.addEventListener("click", fadeOutBackgroundImage);
   
     
     // Add event listener for "Letter to You" button
@@ -16,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
             window.open(docLink, '_blank');
         } else {
             console.error("Document link not found in localStorage");
-    // Add event listener for "Letter to Future You" button
-    document.getElementById('letterToFutureYouBtn').addEventListener('click', openGoogleForm);
-    }
+        }
+});
+    
         
     function openGoogleForm(){
         window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
