@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('reenterID').addEventListener('click', handleReenterID);
     page1.addEventListener("click", handleFrameClick);
     nextPageButton.addEventListener("click", fadeOutBackgroundImage);
+    document.getElementById('letterToYouBtn').addEventListener('click', showFinalText);
+    document.getElementById('backToLetterPageBtn').addEventListener('click', handleBackToLetterPage);
   
     
     // Add event listener for "Letter to You" button
@@ -95,7 +97,23 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Video has loaded. Showing main content...");
         fadeInMainContent();
     });
+    
+    async function fetchMessageByTableID(tableID) {
+    try {
+        const response = await fetch('assets/main/list.json');
+        const messages = await response.json();
+        const matchedMessage = messages.find(message => message.tableid == tableID);
 
+        if (matchedMessage) {
+            document.getElementById('finalMessage').textContent = matchedMessage.msglist;
+        } else {
+            document.getElementById('finalMessage').textContent = "ข้อความไม่พบในระบบ";
+        }
+    } catch (error) {
+        console.error("Error fetching message:", error);
+    }
+    }
+    
     // Function to fetch student data from JSON
     async function fetchStudentData() {
         try {
@@ -184,4 +202,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const studentIDPage = document.getElementById('studentIDPage');
         transitionPages(confirmationPage, studentIDPage);
     }
+
+    
+    // Handle showing final text message with fade-in transition
+    async function showFinalText() {
+    const tableID = localStorage.getItem('tableID');
+    await fetchMessageByTableID(tableID);
+
+    const letterPage = document.getElementById('letterPage');
+    const finalTextPage = document.getElementById('finalTextPage');
+    transitionPages(letterPage, finalTextPage);
+    }
+
+
+    // Handle back button to return to Letter Page
+    function handleBackToLetterPage() {
+    const finalTextPage = document.getElementById('finalTextPage');
+    const letterPage = document.getElementById('letterPage');
+    transitionPages(finalTextPage, letterPage);
+    }
+
 });
