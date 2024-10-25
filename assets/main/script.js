@@ -9,8 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('reenterID').addEventListener('click', handleReenterID);
     document.getElementById('letterToYouBtn').addEventListener('click', showFinalMessage);
     document.getElementById('backToLetterPageBtn').addEventListener('click', handleBackToLetterPage);
-    page1.addEventListener("click", handleFrameClick);
-    nextPageButton.addEventListener("click", fadeOutBackgroundImage);
 });
 
     function openGoogleForm(){
