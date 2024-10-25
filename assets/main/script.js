@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('backToStudentIDBtn').addEventListener('click', handleBackToStudentID);
     document.getElementById('returnToFirstPageBtn').addEventListener('click', handleReturnToFirstPage);
     document.getElementById('reenterID').addEventListener('click', handleReenterID);
+    document.getElementById('letterToYouBtn').addEventListener('click', showFinalMessage);
+    document.getElementById('backToLetterPageBtn').addEventListener('click', handleBackToLetterPage);
+});
+
     page1.addEventListener("click", handleFrameClick);
     nextPageButton.addEventListener("click", fadeOutBackgroundImage);
 
@@ -118,10 +122,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (foundStudent) {
             nicknameElement.textContent = foundStudent.nickname;
+            localStorage.setItem('msg', foundStudent.msg);
             localStorage.setItem('tempStudentID', foundStudent.studentid);
             localStorage.setItem('tempStudentName', foundStudent.nickname);
             localStorage.setItem('tempTableID', foundStudent.tableid);
-            localStorage.setItem('doclink', foundStudent.doclink);  // Store the doclink in localStorage
 
             transitionPages(studentIDPage, confirmationPage);
         } else {
@@ -175,7 +179,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const studentIDPage = document.getElementById('studentIDPage');
         transitionPages(confirmationPage, studentIDPage);
     }
+// Display final message from freshies-2.json
+async function showFinalMessage() {
+    const msg = localStorage.getItem('msg');
+    document.getElementById('finalMessage').textContent = msg || "Message not found.";
 
-    
+    const letterPage = document.getElementById('letterPage');
+    const finalTextPage = document.getElementById('finalTextPage');
+    transitionPages(letterPage, finalTextPage);
+}
+
+// Return to letter page from final message
+function handleBackToLetterPage() {
+    const finalTextPage = document.getElementById('finalTextPage');
+    const letterPage = document.getElementById('letterPage');
+    transitionPages(finalTextPage, letterPage);
+} 
 
 });
