@@ -9,11 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('reenterID').addEventListener('click', handleReenterID);
     page1.addEventListener("click", handleFrameClick);
     nextPageButton.addEventListener("click", fadeOutBackgroundImage);
-    document.getElementById('letterToYouBtn').addEventListener('click', showFinalText);
-    document.getElementById('backToLetterPageBtn').addEventListener('click', handleBackToLetterPage);
-  
 
-        
+
     function openGoogleForm(){
         window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
     }
@@ -101,21 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    async function fetchMessageByTableID(tableID) {
-        try {
-            const response = await fetch('assets/main/list.json');
-            const messages = await response.json();
-            const matchedMessage = messages.find(message => message.tableid == tableID);
-        if (matchedMessage) {
-            document.getElementById('finalMessage').textContent = matchedMessage.msglist;
-        } else {
-            document.getElementById('finalMessage').textContent = "ข้อความไม่พบในระบบ";
-        }
-            } catch (error) {
-        console.error("Error fetching message:", error);
-        }
-    }
-
     // Handle "I Agree and Proceed" button
     function handleProceed() {
         const introductionPage = document.getElementById('introductionPage');
@@ -195,22 +177,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     
-    // Handle showing final text message with fade-in transition
-    async function showFinalText() {
-    const tableID = localStorage.getItem('tableID');
-    await fetchMessageByTableID(tableID);
-
-    const letterPage = document.getElementById('letterPage');
-    const finalTextPage = document.getElementById('finalTextPage');
-    transitionPages(letterPage, finalTextPage);
-    }
-
-
-    // Handle back button to return to Letter Page
-    function handleBackToLetterPage() {
-    const finalTextPage = document.getElementById('finalTextPage');
-    const letterPage = document.getElementById('letterPage');
-    transitionPages(finalTextPage, letterPage);
-    }
 
 });
