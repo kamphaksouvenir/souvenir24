@@ -88,21 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fadeInMainContent();
     });
     
-    async function fetchMessageByTableID(tableID) {
-    try {
-        const response = await fetch('assets/main/list.json');
-        const messages = await response.json();
-        const matchedMessage = messages.find(message => message.tableid == tableID);
-
-        if (matchedMessage) {
-            document.getElementById('finalMessage').textContent = matchedMessage.msglist;
-        } else {
-            document.getElementById('finalMessage').textContent = "ข้อความไม่พบในระบบ";
-        }
-    } catch (error) {
-        console.error("Error fetching message:", error);
-    }
-    }
+ 
     
     // Function to fetch student data from JSON
     async function fetchStudentData() {
@@ -112,6 +98,21 @@ document.addEventListener("DOMContentLoaded", function () {
             return studentData;
         } catch (error) {
             console.error("Error fetching student data:", error);
+        }
+    }
+
+    async function fetchMessageByTableID(tableID) {
+        try {
+            const response = await fetch('assets/main/list.json');
+            const messages = await response.json();
+            const matchedMessage = messages.find(message => message.tableid == tableID);
+        if (matchedMessage) {
+            document.getElementById('finalMessage').textContent = matchedMessage.msglist;
+        } else {
+            document.getElementById('finalMessage').textContent = "ข้อความไม่พบในระบบ";
+        }
+            } catch (error) {
+        console.error("Error fetching message:", error);
         }
     }
 
