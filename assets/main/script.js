@@ -12,17 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('letterToYouBtn').addEventListener('click', showFinalText);
     document.getElementById('backToLetterPageBtn').addEventListener('click', handleBackToLetterPage);
   
-    
-    // Add event listener for "Letter to You" button
-    document.getElementById('letterToYouBtn').addEventListener('click', function () {
-        const docLink = localStorage.getItem('doclink');
-        if (docLink) {
-            window.open(docLink, '_blank');
-        } else {
-            console.error("Document link not found in localStorage");
-        }
-});
-    
+
         
     function openGoogleForm(){
         window.open('https://forms.gle/DgNatixPiSxzHqC27','_blank');
