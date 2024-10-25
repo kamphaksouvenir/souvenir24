@@ -192,4 +192,3 @@ function handleBackToLetterPage() {
     transitionPages(finalTextPage, letterPage);
 } 
 
-});
